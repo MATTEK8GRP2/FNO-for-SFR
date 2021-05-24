@@ -8,7 +8,7 @@ E-Mails:	{sbbt17, ksagaa17, mvejli17}@student.aau.dk
 In this work a Fourier neural operator is used for sound field reconstruction in the time domain. The experiments are made on simulated room impulse responses using the image source method. Using the simulated data an FNO and a baseline model is trained and tested for different spatio-temporal discretizations.
 
 ## Files
-The code consists of a number of scripts and modules including dependencies between the scripts. The dependencies will be outline following a listing of the included scripts.
+The code consists of a number of scripts and modules including dependencies between the scripts. In the following, an overview of the included files and folders will be given.
 
 - 'Normalization.py' is used to create a normalizer used to normalize the impulse responses used during training and evaluation of the models.
 - 'Loss_Function.py' is a module containing the loss function used for neural network training.
@@ -29,6 +29,7 @@ The code consists of a number of scripts and modules including dependencies betw
 	- Test/ is a folder to store results from testing.
 - model/ is a folder to store the trained models.
 
+## Usage
 To use the code follow the steps as described below:
 
 - Run the "RIR_generator.py" script to simulate room impulse responses used for training, validation, and test.
