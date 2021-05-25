@@ -10,6 +10,7 @@ In this work a Fourier neural operator is used for sound field reconstruction in
 
 The implementation is inspired by code found in the repository
 - [FNO Repository](https://github.com/zongyi-li/fourier_neural_operator)
+
 which contains code for the paper
 - [Fourier Neural Operator for Parametric Partial Differential Equations](https://arxiv.org/abs/2010.08895)
 
