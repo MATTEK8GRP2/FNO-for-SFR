@@ -2,7 +2,8 @@
 
 This GitHub repository contains code for the 8th semester project on Fourier Neural Operators for Sound Field Reconstruction in the Time Domain made by graduate students in Mathematical-Engineering at Aalborg University.
 
-Authors:	Simone Birk Bols Thomsen, Kristian Søgaard, and Martin Voigt Vejling\n
+Authors:	Simone Birk Bols Thomsen, Kristian Søgaard, and Martin Voigt Vejling
+
 E-Mails:	{sbbt17, ksagaa17, mvejli17}@student.aau.dk
 
 In this work a Fourier neural operator is used for sound field reconstruction in the time domain. The experiments are made on simulated room impulse responses using the image source method. Using the simulated data an FNO and a baseline model is trained and tested for different spatio-temporal discretizations.
