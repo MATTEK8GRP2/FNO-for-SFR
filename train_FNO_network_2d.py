@@ -53,6 +53,7 @@ from Loss_Function import LpLoss
 seed = 10 # random seed
 torch.manual_seed(seed)
 np.random.seed(seed)
+no_cuda = False
 
 TRAIN_PATH = 'data/train_data/'
 VALID_PATH = 'data/validation_data/'
@@ -62,8 +63,8 @@ nval = 400
 
 log_status = 1
 
-#model = "FNO"
-model = "Baseline"
+model = "FNO"
+#model = "Baseline"
 
 modes_x = 6 # maximum 8 due to the use of only 16 microphones
 modes_t = 12 # maximum N_u/2 (75/2 for training)
@@ -73,7 +74,7 @@ q_width = 128
 batch_size = 10
 batch_size2 = 1
 
-epochs = 300
+epochs = 1
 learning_rate = 0.001
 scheduler_step = 30
 scheduler_gamma = 0.5
@@ -81,7 +82,7 @@ weight_decay = 1e-3
 
 print(epochs, learning_rate, scheduler_step, scheduler_gamma)
 
-path = model+'001' # Name of the model used for saving model and results
+path = model+'002' # Name of the model used for saving model and results
 path_model = 'model/'+path
 path_train_err = 'results/Train/'+path+'_train.png'
 path_train_log = 'results/Train/'+path+'_log.txt'
@@ -146,9 +147,9 @@ valid_loader = torch.utils.data.DataLoader(torch.utils.data.TensorDataset(A_norm
 # Prepare Model for Training
 ################################################################
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+use_cuda = not no_cuda and torch.cuda.is_available()
+device = torch.device('cuda' if use_cuda else 'cpu')
 normalizer.to(device)
-print(device)
 
 if model == "FNO":
     model = MyNetwork.Net2d(modes_x, modes_t, width, q_width).to(device)

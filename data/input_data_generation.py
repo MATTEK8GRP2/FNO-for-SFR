@@ -144,9 +144,9 @@ def create_input_tensor(a, x, targets_between_input=3, Nt=1201, fs=1200,
 
 
 if __name__ == '__main__':
-    #data_type = 'test'
+    data_type = 'test'
     #data_type = 'validation'
-    data_type = 'train'
+    #data_type = 'train'
 
 
     ### Path to Data ###

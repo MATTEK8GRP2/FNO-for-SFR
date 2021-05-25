@@ -36,7 +36,8 @@ from Loss_Function import LpLoss
 from Normalization import Max_Normalization
 
 
-def eval_u(VALIDATION_PATH, model_name, targets_between_input, normalizer, a_downsample):
+def eval_u(VALIDATION_PATH, model_name, targets_between_input, normalizer, a_downsample,
+           no_cuda=False):
     # =============================================================================
     # Load data
     # =============================================================================
@@ -77,7 +78,8 @@ def eval_u(VALIDATION_PATH, model_name, targets_between_input, normalizer, a_dow
 
     model = torch.load('model/'+model_name)
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    use_cuda = not no_cuda and torch.cuda.is_available()
+    device = torch.device('cuda' if use_cuda else 'cpu')
 
     myloss = LpLoss(size_average=False, reduction=True)
     normalizer.to(device)
@@ -109,9 +111,11 @@ if __name__ == '__main__':
     # Specifications
     # =============================================================================
 
+    no_cuda = False
     targets_between_input_list = [1, 2, 3, 5, 11, 23]
     a_downsample = 24
     model_name = 'FNO001'
+    #model_name = 'Baseline001'
     VALIDATION_PATH = 'data/validation_data/'
 
 
@@ -121,7 +125,8 @@ if __name__ == '__main__':
 
     validation_l2_list = []
     for targets_between_input in targets_between_input_list:
-        validation_l2 = eval_u(VALIDATION_PATH, model_name, targets_between_input, normalizer, a_downsample)
+        validation_l2 = eval_u(VALIDATION_PATH, model_name, targets_between_input,
+                               normalizer, a_downsample, no_cuda)
         validation_l2_list.append(validation_l2)
 
 

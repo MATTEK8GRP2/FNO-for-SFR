@@ -37,7 +37,8 @@ from Loss_Function import LpLoss
 from Normalization import Max_Normalization
 
 
-def test_u(TEST_PATH, model_name, targets_between_input, normalizer, a_downsample):
+def test_u(TEST_PATH, model_name, targets_between_input, normalizer, a_downsample,
+           no_cuda=False):
     # =============================================================================
     # Load data
     # =============================================================================
@@ -74,7 +75,8 @@ def test_u(TEST_PATH, model_name, targets_between_input, normalizer, a_downsampl
     # =============================================================================
     model = torch.load('model/'+model_name)
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    use_cuda = not no_cuda and torch.cuda.is_available()
+    device = torch.device('cuda' if use_cuda else 'cpu')
 
     myloss = LpLoss(size_average=False, reduction=True)
     normalizer.to(device)
@@ -106,6 +108,7 @@ if __name__ == '__main__':
     # Specifications
     # =============================================================================
 
+    no_cuda = False
     a_downsample = 24
     targets_between_input_list = [1, 2, 3, 5, 11, 23]
     model_name = 'FNO001'
@@ -119,13 +122,13 @@ if __name__ == '__main__':
 
     test_l2_list = []
     for targets_between_input in targets_between_input_list:
-        test_l2 = test_u(TEST_PATH, model_name, targets_between_input, normalizer, a_downsample)
+        test_l2 = test_u(TEST_PATH, model_name, targets_between_input, normalizer, a_downsample, no_cuda)
         test_l2_list.append(test_l2)
 
     if model_baseline != None:
         baseline_test_l2_list = []
         for targets_between_input in targets_between_input_list:
-            baseline_test_l2 = test_u(TEST_PATH, model_baseline, targets_between_input, normalizer, a_downsample)
+            baseline_test_l2 = test_u(TEST_PATH, model_baseline, targets_between_input, normalizer, a_downsample, no_cuda)
             baseline_test_l2_list.append(baseline_test_l2)
 
 
