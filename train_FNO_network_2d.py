@@ -16,7 +16,7 @@ The training is in line with the description in the report
         Fourier Neural Operators for Sound Field Reconstruction
                         in the Time Domain
            - Chapter 7: Temporal Sound Field Reconstruction
-                    
+
 The models made with this script can be used to evaluate on the validation
 and the test data sets in the scripts validation_err_vs_res_plot.py and
 test_FNO_network_2d.py.
