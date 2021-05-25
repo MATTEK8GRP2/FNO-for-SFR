@@ -8,6 +8,11 @@ E-Mails:	{sbbt17, ksagaa17, mvejli17}@student.aau.dk
 
 In this work a Fourier neural operator is used for sound field reconstruction in the time domain. The experiments are made on simulated room impulse responses using the image source method. Using the simulated data an FNO and a baseline model is trained and tested for different spatio-temporal discretizations.
 
+The implementation is inspired by code found in the repository
+- [FNO Repository](https://github.com/zongyi-li/fourier_neural_operator)
+which contains code for the paper
+- [Fourier Neural Operator for Parametric Partial Differential Equations](https://arxiv.org/abs/2010.08895)
+
 ## Files
 The code consists of a number of scripts and modules including dependencies between the scripts. In the following, an overview of the included files and folders will be given.
 
